@@ -1,0 +1,42 @@
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\PenjualSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Penjuals';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="penjual-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Create Penjual', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?php Pjax::begin(); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'Id_Penjual',
+            'No_telepon',
+            'Nama_penjual',
+            'Alamat_penjual',
+            'Produk_Id_Produk',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+    <?php Pjax::end(); ?>
+
+</div>
